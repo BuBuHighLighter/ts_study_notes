@@ -5,6 +5,8 @@
 
 [第三节——TS中的函数](./notes/lesson_03/README.md)
 
-[第四节——TS中的类](./notes/lesson_04/README.md)
+[第四节——TS中的类(上)](./notes/lesson_04/README.md)
+
+[第五节——TS中的类(下)](./notes/lesson_05/README.md)
 ****
 
