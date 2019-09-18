@@ -100,5 +100,24 @@ printName({firstName: 'hello', secondName: 'world'});           /* 正确 */
 ```
 
 ## 举个例子
-用接口定义ajax参数。略
+用接口定义ajax参数。略。
+
+## 函数类型接口
+对方法传入的`参数`以及`返回值`进行约束。
+
+加密的函数类型接口：
+
+[代码示例](../../demo/lesson_06/demo2/index.ts)
+```ts
+interface Encrypt {
+    (key: string, value: string): string;
+}
+
+const md5: Encrypt = function(key: string, value: string): string {
+    // 模拟操作
+    return key + value;
+}
+
+console.log(md5('hello', 'world'));
+```
 
