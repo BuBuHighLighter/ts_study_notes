@@ -121,3 +121,123 @@ const md5: Encrypt = function(key: string, value: string): string {
 console.log(md5('hello', 'world'));
 ```
 
+## 可索引接口
+
+数组、对象的约束。（不常用）
+
+### TS定义数组的方式
+
+```ts
+let arr: number[] = [123, 123];
+let arr1:Array<number> = [123,456];
+```
+
+可索引接口对数组的约束
+```ts
+interface UserArr {
+    [index: number]: string;
+}
+let arr = ['hello', 'world'];
+```
+
+可索引接口对对象的约束
+```ts
+interface UserInfo {
+    [index: string]: string;
+}
+/* 正确 */
+let userObj = {
+    name: 'hello world'
+}
+/* 错误 */
+let userObj1 = {
+    name: 'hello world',
+    age: '20'
+}
+```
+
+## 类类型接口
+对类的约束，和抽象类有点相似
+
+[代码示例](../../notes/lesson_06/demo3/index.ts)
+
+```ts
+interface Animal {
+    name: string;
+    eat(str: string): void;
+}
+class Dog implements Animal {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    eat():void {
+        console.log(this.name + 'eat food');
+    }
+}
+let dog = new Dog('旺财');
+dog.eat();                      // 旺财eat food
+
+class Cat implements Animal {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    eat(food: string): void {
+        console.log(this.name + ' eat ' + food);
+    }
+}
+let cat = new Cat('来福');
+cat.eat('老鼠');                // 来福 eat 老鼠
+```
+
+## 接口扩展
+
+接口可以继承接口
+
+[代码示例](../../demo/lesson_06/demo4/index.ts)
+
+```ts
+interface Animal {
+    eat():void;
+}
+
+interface People extends Animal {
+    work(str: string): void;
+}
+
+class Male implements People {
+    public name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    eat(): void {
+        console.log(this.name + '吃米饭');
+    }
+
+    work(): void {
+        console.log(this.name + '在城市上班');
+    }
+}
+let male = new Male('旺财');
+male.eat();
+male.work();
+
+/* 这里不写implements也可以，因为Male类已经被People接口约束了，不用再进行相同的约束了 */
+class Stu extends Male implements People {
+    constructor(name: string) {
+        super(name);
+    }
+
+    study(lesson: string) {
+        console.log(this.name + '学习' + lesson);
+    }
+}
+
+let stu = new Stu('来福');
+stu.eat();
+stu.work();
+stu.study('物理');
+```
+
