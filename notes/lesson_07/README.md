@@ -27,7 +27,7 @@ function getData2(value: number): number {
     return value;
 }
 ```
-用`any`可以解决这个问题，但是any放弃了类型检查。
+用`any`可以解决这个问题，但是`any`放弃了类型检查。
 
 比如：传入number类型，返回number类型；传入string类型，返回string类型。但是any就不行了。
 
@@ -165,4 +165,47 @@ const mySetData:ConfigFn<string> = function<T> (value: T): T {
 
 console.log(mySetData('hello world'));             // 20
 ```
+
+## 泛型类
+
+1.定义个类
+
+2.把类作为参数来约束数据传入的类型
+
+[代码示例](../../demo/lesson_07/demo4/index.ts)
+```ts
+class MinClass<T> {
+    public list: T[] = [];
+    add(value: T): void {
+        this.list.push(value);
+    }
+    min(): T {
+        let minNum = this.list[0];
+        for (let i = 0; i < this.list.length; i++) {
+            if (minNum < this.list[i]) {
+                minNum = this.list[i];
+            }
+        }
+        return minNum;
+    }
+}
+
+const m1 = new MinClass<number> ();
+m1.add(1);
+m1.add(3);
+m1.add(2);
+m1.add('123');                  // 报错
+console.log(m1.min());          // 1
+
+const m2 = new MinClass<string> ();
+m2.add('b');
+m2.add('z');
+m2.add('a');
+console.log(m2.min());          // 'a'
+```
+
+## 实例
+定义一个操作数据库的库，支持MySQL、MsSQL、MongoDB。
+
+[代码示例](../../demo/lesson_07/demo5/index.ts)
 
