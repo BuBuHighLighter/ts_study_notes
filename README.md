@@ -12,5 +12,9 @@
 [第六节——接口](./notes/lesson_06/README.md)
 
 [第七节——泛型](./notes/lesson_07/README.md)
+
+[第八节——模块](./notes/lesson_08/README.md)
+
+[第九节——命名空间](./notes/lesson_09/README.md)
 ****
 
