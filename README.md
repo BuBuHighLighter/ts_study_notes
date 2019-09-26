@@ -16,5 +16,7 @@
 [第八节——模块](./notes/lesson_08/README.md)
 
 [第九节——命名空间](./notes/lesson_09/README.md)
+
+[第十节——装饰器](./notes/lesson_10/README.md)
 ****
 
